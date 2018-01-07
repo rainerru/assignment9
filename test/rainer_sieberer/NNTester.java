@@ -40,14 +40,14 @@ public class NNTester
 		CSVInterpreter csvInterpreter = new CSVDigitInterpreter();
 		
 		try{
-		if ( nn.init( new File("./mnist_train_100.csv")) )
+		if ( nn.init( new File("../data/mnist_train_100.csv")) )
 		{
 			System.out.println("Initialization succesful!");
 			if ( nn.train() )
 			{
 				System.out.println("Training succesful!");
 				
-				BufferedReader br = new BufferedReader( new FileReader( new File("./mnist_test_10.csv")) );
+				BufferedReader br = new BufferedReader( new FileReader( new File("../data/mnist_test_10.csv")) );
 				String line = br.readLine();
 				line = line.substring(2);
 				
