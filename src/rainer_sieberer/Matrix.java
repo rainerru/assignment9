@@ -109,6 +109,7 @@ public class Matrix
 		for ( int i = 0; i < A.getXDim(); i++ )
 			for ( int j = 0; j < A.getYDim(); j++ )
 				leftMatrix.data[i][j] = learningRate * A.data[i][j] * B.data[i][j] * ( 1.0 - B.data[i][j] );
+
 		Matrix rightMatrix = C.getTransposed();
 		Matrix prod = leftMatrix.matrixProduct( rightMatrix );
 		

@@ -36,7 +36,7 @@ public class NeuralNetwork implements Assignment9
 		who.randomize();
 		this.setActivationFunction( new SigmoidFunction() );
 		csvInterpreter = new CSVDigitInterpreter();
-		this.numberOfTrainingRuns = 20;
+		this.numberOfTrainingRuns = 1;
 	}
 
 	public void setActivationFunction ( ActivationFunction newActivationFunction )
@@ -78,7 +78,7 @@ public class NeuralNetwork implements Assignment9
 			
 			this.who.weightUpdate( outputErrors, finalOutputs, hiddenOutputs, learningRate );
 			this.wih.weightUpdate( hiddenErrors, hiddenOutputs, inputs, learningRate );
-		}/*
+		}
 		inputs.printToFile("./0inputs.txt");
 		targets.printToFile("./0targets.txt");
 		hiddenInputs.printToFile("./1hiddenInputs.txt");
@@ -87,7 +87,7 @@ public class NeuralNetwork implements Assignment9
 		finalOutputs.printToFile("./4finalOutputs.txt");
 		outputErrors.printToFile("./5outputErrors.txt");
 		whoTransposed.printToFile("./6whoTransposed.txt");
-		hiddenErrors.printToFile("./7hiddenErrors.txt");*/
+		hiddenErrors.printToFile("./7hiddenErrors.txt");
 		who.printToFile("./8who.txt");
 		wih.printToFile("./9wih.txt");
 		

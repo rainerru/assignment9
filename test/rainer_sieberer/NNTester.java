@@ -9,32 +9,51 @@ public class NNTester
 
 	public static void main ( String[] args )
 	{
+/*
+		Matrix A = new Matrix(2,2);
+		Matrix B = new Matrix(2,2);
+		Matrix C = new Matrix(2,2);
+		A.setValue(0,0,1);
+		A.setValue(1,0,2);
+		A.setValue(0,1,3);
+		A.setValue(1,1,4);
+		B.setValue(0,0,5);
+		B.setValue(1,0,6);
+		B.setValue(0,1,7);
+		B.setValue(1,1,8);
+		C.setValue(0,0,10);
+		C.setValue(1,0,100);
+		C.setValue(0,1,1000);
+		C.setValue(1,1,10000);
 	
-		Matrix a = new Matrix(1,2);
-		Matrix b = new Matrix(2,3);
-		a.setValue(0,0,0);
-		a.setValue(0,1,0);
-		b.setValue(0,0,0.01);
-		b.setValue(0,1,0.01);
-		b.setValue(0,2,0.01);
-		b.setValue(1,0,0.01);
-		b.setValue(1,1,0.01);
-		b.setValue(1,2,0.01);
+		Matrix D = new Matrix(2,2);
+		D.setValue(0,0,0.1);
+		D.setValue(1,0,0.2);
+		D.setValue(0,1,0.3);
+		D.setValue(1,1,0.4);
+try{
+		D.weightUpdate(A,B,C,0.1);
+} catch ( Exception e ) {
+			System.out.println("exception occurrred");
+			e.printStackTrace();
+		}
+		D.print();
+
+		ActivationFunction S = new SigmoidFunction();
+		System.out.println("S(-10) = " + S.use(-10));
+		System.out.println("S(-1) = " + S.use(-1));
+		System.out.println("S(0) = " + S.use(0));
+		System.out.println("S(1) = " + S.use(1));
+		System.out.println("S(10) = " + S.use(10));
+		System.out.println("S(2.7) = " + S.use(2.7));
 		
-		/*CSVInterpreter csvInterpreter0 = new CSVDigitInterpreter();
-		try{
-		Matrix wih = new Matrix(200,784);
-		Matrix inputs = csvInterpreter0.getInputs( new File("./mnist_train_100.csv")  );
-		Matrix hiddenInputs = wih.matrixProduct( inputs );
-		hiddenInputs.printToFile("./1hiddenInputs.txt");
-		} catch ( Exception e) {}
+		double E = 3.14159265358979323846;
+		System.out.println("e(-10) = " + Math.pow(E,-10));
+		System.out.println("e(-1) = " + Math.pow(E,-1));
+		System.out.println("e(0) = " + Math.pow(E,0));
 		*/
-		
-		try{
-		Matrix c = a.matrixProduct(b);
-		c.print();
-		} catch ( Exception e) {}
-		
+
+
 		NeuralNetwork nn = new NeuralNetwork();
 		System.out.println("Neural Network created!");
 		CSVInterpreter csvInterpreter = new CSVDigitInterpreter();
