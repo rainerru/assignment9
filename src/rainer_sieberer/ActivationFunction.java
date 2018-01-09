@@ -3,6 +3,6 @@ package rainer_sieberer;
 public interface ActivationFunction
 {
 
-	public double use ( double value );
+	public float use ( float value );
 
 }

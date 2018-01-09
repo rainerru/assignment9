@@ -14,7 +14,7 @@ public class NeuralNetwork implements Assignment9
 
 	protected int iNodes, hNodes, oNodes;
 	protected Matrix wih, who;
-	protected double learningRate;
+	protected float learningRate;
 	protected ActivationFunction activate;
 	protected CSVInterpreter csvInterpreter;
 	protected int numberOfTrainingRuns;
@@ -29,14 +29,14 @@ public class NeuralNetwork implements Assignment9
 		this.iNodes = 784;
 		this.hNodes = 200;
 		this.oNodes = 10;
-		this.learningRate = 0.1;
+		this.learningRate = 0.1f;
 		this.wih = new Matrix(hNodes,iNodes);
 		this.who = new Matrix(oNodes,hNodes);
 		wih.randomize();
 		who.randomize();
 		this.setActivationFunction( new SigmoidFunction() );
 		csvInterpreter = new CSVDigitInterpreter();
-		this.numberOfTrainingRuns = 1;
+		this.numberOfTrainingRuns = 10;
 	}
 
 	public void setActivationFunction ( ActivationFunction newActivationFunction )

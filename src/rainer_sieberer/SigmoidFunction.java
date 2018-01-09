@@ -3,11 +3,11 @@ package rainer_sieberer;
 public class SigmoidFunction implements ActivationFunction
 {
 
-	private static final double E = 2.718281828459045;
+	private static final float E = 2.718281828459045f;
 
-	public double use ( double value )
+	public float use ( float value )
 	{
-		return 1/(1+Math.pow(E,-value));
+		return 1/(1+(float)Math.pow(E,-value));
 
 		/*double x = value;
 		if (x < 0) {

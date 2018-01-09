@@ -6,7 +6,7 @@ import java.util.Random;
 public class Matrix
 {
 
-	protected double[][] data;
+	protected float[][] data;
 	protected int xDim;
 	protected int yDim;
 	
@@ -14,26 +14,26 @@ public class Matrix
 	{
 		this.xDim = xDim;
 		this.yDim = yDim;
-		this.data = new double[xDim][yDim];
+		this.data = new float[xDim][yDim];
 	}
 	
 	public int getXDim () { return this.xDim; }
 	
 	public int getYDim () { return this.yDim; }
 	
-	public double getValue ( int i, int j ) { return this.data[i][j]; }
+	public float getValue ( int i, int j ) { return this.data[i][j]; }
 	
-	public void setValue ( int i, int j, double value ) { this.data[i][j] = value; }
+	public void setValue ( int i, int j, float value ) { this.data[i][j] = value; }
 	
-	public void addValue ( int i, int j, double value ) { this.data[i][j] += value; }
+	public void addValue ( int i, int j, float value ) { this.data[i][j] += value; }
 
 	public void randomize ()
 	{
 		Random gaussMaker = new Random();
-		double upperBound = Math.pow(this.xDim,-0.5);
+		float upperBound = (float) Math.pow(this.xDim,-0.5f);
 		for ( int i = 0; i < this.xDim; i++ )
 			for ( int j = 0; j < this.yDim; j++ )
-				this.data[i][j] = gaussMaker.nextGaussian()*upperBound;
+				this.data[i][j] = ((float)gaussMaker.nextGaussian()) *upperBound;
 	}
 	
 	public Matrix useActivationFunction ( ActivationFunction activate )
@@ -48,7 +48,7 @@ public class Matrix
 	public int getIndexWithMax () // only checks 1 dim
 	{
 		int index = 0;
-		double maxValue = this.data[0][0];
+		float maxValue = this.data[0][0];
 		for ( int i = 1; i < xDim; i++ ) // xDim or yDim?
 		{
 			if ( maxValue < this.data[i][0] )
@@ -100,7 +100,7 @@ public class Matrix
 		return result;
 	}
 
-	public void weightUpdate( Matrix A, Matrix B, Matrix C, double learningRate ) throws Exception
+	public void weightUpdate( Matrix A, Matrix B, Matrix C, float learningRate ) throws Exception
 	{
 		/*if ( this.xDim != A.getXDim() || this.xDim != B.getXDim() || this.yDim != C.getXDim() ||
 			 this.yDim != C.getXDim() || A.getYDim() != B.getYDim() || A.getYDim != C.getYDim() ) // and this!
@@ -108,7 +108,7 @@ public class Matrix
 		Matrix leftMatrix = new Matrix( A.getXDim(), A.getYDim() );
 		for ( int i = 0; i < A.getXDim(); i++ )
 			for ( int j = 0; j < A.getYDim(); j++ )
-				leftMatrix.data[i][j] = learningRate * A.data[i][j] * B.data[i][j] * ( 1.0 - B.data[i][j] );
+				leftMatrix.data[i][j] = learningRate * A.data[i][j] * B.data[i][j] * ( 1.0f - B.data[i][j] );
 
 		Matrix rightMatrix = C.getTransposed();
 		Matrix prod = leftMatrix.matrixProduct( rightMatrix );

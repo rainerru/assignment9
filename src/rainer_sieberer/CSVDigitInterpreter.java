@@ -54,7 +54,7 @@ public class CSVDigitInterpreter implements CSVInterpreter
 		{
 			String[] parts = lines.remove().split(",");
 			for ( int i = 0; i < 784; i++ )
-				result.setValue(i,j, Double.parseDouble(parts[i+1])/255*0.99+0.01 ); // or Double.parseDouble ???
+				result.setValue(i,j, Float.parseFloat(parts[i+1])/255*0.99f+0.01f ); // or Double.parseDouble ???
 		}
 		return result;
 	}
@@ -91,9 +91,9 @@ public class CSVDigitInterpreter implements CSVInterpreter
 		for ( int i = 0; i < size; i++ )
 		{
 			for ( int j = 0; j < 10; j++ )
-				result.setValue(j, i, 0.01 );
+				result.setValue(j, i, 0.01f );
 			String[] parts = lines.remove().split(",");
-			result.setValue(Integer.parseInt(parts[0]),i ,  0.99 );
+			result.setValue(Integer.parseInt(parts[0]),i ,  0.99f );
 		}
 		return result;
 	}
@@ -119,7 +119,7 @@ public class CSVDigitInterpreter implements CSVInterpreter
 		String[] parts = csvString.split(",");
 		Matrix result = new Matrix( 784, 1 );
 		for ( int i = 0; i < 784; i++ )
-			result.setValue(i,0, Double.parseDouble(parts[i])/255*0.99+0.01 );
+			result.setValue(i,0, Float.parseFloat(parts[i])/255*0.99f+0.01f );
 		return result;
 	}
 
